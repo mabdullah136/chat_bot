@@ -14,18 +14,6 @@ Python 3.8 or higher
 Git
 An OpenAI API key (sign up at OpenAI)
 
-## Installation
-
-### Clone the Repository:
-
--  git clone https://github.com/mabdullah136/chat_bot.git
-- cd chat_bot
-- python3 -m venv env
-- source env/bin/activate  
-- pip install -r requirements.txt
-- python3 manage.py migrate
-- python3 manage.py runserver
-
 Create a .env file in the project root and add your OpenAI API key:
 - Open_api_key=your_openai_api_key_here
 
@@ -52,5 +40,13 @@ Model Not Found: Verify the model name in bot/views.py is valid for your OpenAI 
 
 ## Contributing
 Feel free to fork the repository, make improvements, and submit pull requests.
-License
-This project is open-source and available under the MIT License.
+
+## Project Setup
+```bash
+git clone https://github.com/mabdullah136/chat_bot.git
+cd chat_bot
+python3 -m venv env
+source env/bin/activate  # On Windows: env\Scripts\activate
+pip install -r requirements.txt
+python3 manage.py migrate
+python3 manage.py runserver
