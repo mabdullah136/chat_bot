@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div
+      class="max-w-3xl w-full mx-auto bg-white p-6 rounded-lg shadow-md my-6"
+    >
+      <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">Chatbot</h1>
+
+      <!-- Prompt Form -->
+      <form method="post" class="mb-6">
+        {% csrf_token %}
+        <div class="mb-4">
+          <label for="prompt" class="block text-sm font-medium text-gray-700"
+            >Enter your prompt:</label
+          >
+          <textarea
+            id="prompt"
+            name="prompt"
+            rows="4"
+            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-3"
+            placeholder="Type your question here..."
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-200"
+        >
+          Submit
+        </button>
+      </form>
+
+      <!-- Response Display -->
+      {% if response %}
+      <div class="bg-gray-50 p-4 rounded-md mb-6">
+        <h2 class="text-lg font-semibold text-gray-800">Response:</h2>
+        <p class="text-gray-600">{{ response }}</p>
+      </div>
+      {% endif %}
+
+      <!-- Error Display -->
+      {% if error %}
+      <div class="bg-red-100 text-red-700 p-4 rounded-md mb-6">
+        <p>{{ error }}</p>
+      </div>
+      {% endif %}
+
+      <!-- Previous Chats -->
+      {% if chat_history %}
+      <div class="bg-gray-100 p-4 rounded-md">
+        <h2 class="text-lg font-semibold text-gray-800 mb-4">
+          Previous Chats:
+        </h2>
+        {% for chat in chat_history %}
+        <div class="mb-4 p-3 bg-white rounded-md shadow-sm">
+          <p class="font-medium text-gray-700">
+            You: <span class="font-normal">{{ chat.prompt }}</span>
+          </p>
+          <p class="font-medium text-gray-700">
+            Bot: <span class="font-normal">{{ chat.response }}</span>
+          </p>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
