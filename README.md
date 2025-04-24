@@ -18,7 +18,7 @@ An OpenAI API key (sign up at OpenAI)
 
 ### Clone the Repository:
 
--  git clone <repository-url>
+-  git clone https://github.com/mabdullah136/chat_bot.git
 - cd chat_bot
 - python3 -m venv env
 - source env/bin/activate  
